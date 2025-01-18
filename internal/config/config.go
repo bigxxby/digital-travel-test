@@ -20,6 +20,10 @@ type Config struct {
 	DBName     string
 	DBSSLMode  string
 
+	//redis
+	RedisHost string
+	RedisPort string
+
 	JwtSecret string
 }
 
@@ -43,6 +47,8 @@ func GetCofig() (*Config, error) {
 		DBSSLMode:  os.Getenv("DB_SSL_MODE"),
 		AppPort:    os.Getenv("APP_PORT"),
 		JwtSecret:  os.Getenv("JWT_SECRET"),
+		RedisHost:  os.Getenv("REDIS_HOST"),
+		RedisPort:  os.Getenv("REDIS_PORT"),
 	}
 
 	// Check if any essential config is missing
@@ -55,6 +61,8 @@ func GetCofig() (*Config, error) {
 		"DB_SSL_MODE": config.DBSSLMode,
 		"APP_PORT":    config.AppPort,
 		"JWT_SECRET":  config.JwtSecret,
+		"REDIS_HOST":  config.RedisHost,
+		"REDIS_PORT":  config.RedisPort,
 	}
 	for key, value := range requiredConfigs {
 		if value == "" {

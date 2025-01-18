@@ -24,6 +24,11 @@ func App() {
 		log.Println(err)
 		return
 	}
+	redisClient, err := connection.GetRedis(config)
+	if err != nil {
+		log.Println(err)
+		return
+	}
 
 	// migrate db
 	err = migration.Migrate(db)
@@ -32,13 +37,9 @@ func App() {
 		return
 	}
 
-	err = utils.CreateAdmin(db)
-	if err != nil {
-		log.Println(err)
-		return
-	}
+	utils.CreateAdmin(db)
 
-	router, err := router.NewRouter(db)
+	router, err := router.NewRouter(db, redisClient)
 	if err != nil {
 		log.Println(err)
 		return

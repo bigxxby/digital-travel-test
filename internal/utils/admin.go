@@ -9,7 +9,7 @@ import (
 func CreateAdmin(db *gorm.DB) error {
 	admin := models.User{
 		Username: "admin",
-		Password: "Admin123#",
+		Password: "Admin123!",
 		Role:     "admin",
 	}
 	err := admin.ValidatePassword()
