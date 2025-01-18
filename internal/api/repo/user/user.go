@@ -1,7 +1,7 @@
 package user
 
 import (
-	"github.com/bigxxby/dream-test-task/internal/models"
+	"github.com/bigxxby/digital-travel-test/internal/models"
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 )

@@ -16,9 +16,9 @@ func init() {
 	}
 }
 
-// @title						dream-shortener API
+// @title						basic CRUD API
 // @version					1.0
-// @description				This is a dream-shortener API
+// @description				This is a basic CRUD API for managing users orders and products
 // @host						localhost:8081
 // @BasePath					/
 // @securityDefinitions.apikey	BearerAuth

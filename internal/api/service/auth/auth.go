@@ -2,7 +2,6 @@ package auth
 
 import (
 	"errors"
-	"fmt"
 
 	"github.com/bigxxby/digital-travel-test/internal/api/repo/auth"
 	"github.com/bigxxby/digital-travel-test/internal/api/repo/user"
@@ -70,8 +69,6 @@ func (as AuthService) Register(username, password string) (*models.User, int, er
 	if user != nil {
 		return nil, 409, errors.New("user already exists")
 	}
-	fmt.Println("user")
-
 	newUser.HashPassword()
 
 	// Сохраняем пользователя в базе данных

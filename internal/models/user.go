@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"time"
 
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
@@ -9,9 +10,14 @@ import (
 )
 
 type User struct {
-	ID       *uuid.UUID `json:"id" gorm:"type:uuid;primaryKey"`
-	Username string     `json:"username" gorm:"unique;not null"`
-	Password string     `json:"-" gorm:"not null"`
+	ID        *uuid.UUID     `json:"id" gorm:"type:uuid;primaryKey"`
+	Username  string         `json:"username" gorm:"unique;not null"`
+	Password  string         `json:"-" gorm:"not null"`
+	RoleID    uint           `json:"role_id"`
+	Role      Role           `json:"role" gorm:"foreignKey:RoleID"`
+	CreatedAt *time.Time     `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt *time.Time     `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt gorm.DeletedAt `json:"deleted_at" gorm:"index"`
 }
 
 func (u *User) BeforeCreate(tx *gorm.DB) (err error) {
