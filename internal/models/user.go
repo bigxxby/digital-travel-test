@@ -12,8 +12,8 @@ import (
 type User struct {
 	ID        *uuid.UUID     `json:"id" gorm:"type:uuid;primaryKey"`
 	Username  string         `json:"username" gorm:"unique;not null"`
+	Role      string         `json:"role" gorm:"not null"`
 	Password  string         `json:"-" gorm:"not null"`
-	RoleID    uint           `json:"role_id"`
 	CreatedAt *time.Time     `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt *time.Time     `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt gorm.DeletedAt `json:"deleted_at" gorm:"index"`

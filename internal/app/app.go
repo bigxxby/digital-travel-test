@@ -7,6 +7,7 @@ import (
 	"github.com/bigxxby/digital-travel-test/internal/database/connection"
 	"github.com/bigxxby/digital-travel-test/internal/database/migration"
 	"github.com/bigxxby/digital-travel-test/internal/router"
+	"github.com/bigxxby/digital-travel-test/internal/utils"
 )
 
 func App() {
@@ -31,11 +32,11 @@ func App() {
 		return
 	}
 
-	// err = utils.CreateAdmin(db)
-	// if err != nil {
-	// 	log.Println(err)
-	// 	return
-	// }
+	err = utils.CreateAdmin(db)
+	if err != nil {
+		log.Println(err)
+		return
+	}
 
 	router, err := router.NewRouter(db)
 	if err != nil {

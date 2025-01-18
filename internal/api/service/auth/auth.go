@@ -70,7 +70,7 @@ func (as AuthService) Register(username, password string) (*models.User, int, er
 		return nil, 409, errors.New("user already exists")
 	}
 	newUser.HashPassword()
-
+	newUser.Role = "user"
 	// Сохраняем пользователя в базе данных
 	createdUser, err := as.UserRepo.CreateUser(newUser)
 	if err != nil {
