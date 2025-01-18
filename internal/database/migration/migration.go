@@ -18,10 +18,6 @@ func Migrate(db *gorm.DB) error {
 	if err != nil {
 		return err
 	}
-	err = db.AutoMigrate(&models.Role{})
-	if err != nil {
-		return err
-	}
 
 	return nil
 }

@@ -14,7 +14,6 @@ type User struct {
 	Username  string         `json:"username" gorm:"unique;not null"`
 	Password  string         `json:"-" gorm:"not null"`
 	RoleID    uint           `json:"role_id"`
-	Role      Role           `json:"role" gorm:"foreignKey:RoleID"`
 	CreatedAt *time.Time     `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt *time.Time     `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt gorm.DeletedAt `json:"deleted_at" gorm:"index"`
